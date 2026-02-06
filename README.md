@@ -66,44 +66,43 @@ python yolov5/train.py --img 320 --batch 16 --epochs 500 --data dataset.yaml --w
 Loading the Custom Model
   After training, you can load your custom weights (last.pt or best.pt) using Torch Hub:
 
-    ```
-        import torch
+ ```python
+     import torch
 
-        # Load local custom model
-        model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5/runs/train/exp/weights/last.pt', force_reload=True)
-    
-    ```
+     # Load local custom model
+     model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5/runs/train/exp/weights/last.pt', force_reload=True)
+ 
+ ```
 
  ### Real-time Detection
-       
-       Run the following script to start the webcam feed and detect drowsiness:
+   
+   Run the following script to start the webcam feed and detect drowsiness:
 
-       ```
-       import cv2
-       import numpy as np
-       
-       cap = cv2.VideoCapture(0)
-       while cap.isOpened():
-           ret, frame = cap.read()
-           
-           # Make detections 
-           results = model(frame)
-           
-           # Render results on frame
-           cv2.imshow('Drowsy Detection', np.squeeze(results.render()))
-           
-           if cv2.waitKey(10) & 0xFF == ord('q'):
-               break
-       
-       cap.release()
-       cv2.destroyAllWindows()
+```python
+import cv2
+import numpy as np
 
-       ```
+cap = cv2.VideoCapture(0)
+while cap.isOpened():
+    ret, frame = cap.read()
+    
+    # Make detections 
+    results = model(frame)
+    
+    # Render results on frame
+    cv2.imshow('Drowsy Detection', np.squeeze(results.render()))
+    
+    if cv2.waitKey(10) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
 
    ## 📁 Project Structure
           
-          Drowsy_Detection_YOLOv5.ipynb: Full development pipeline.
+   Drowsy_Detection_YOLOv5.ipynb: Full development pipeline.
 
-          yolov5/: Detection framework.
+   yolov5/: Detection framework.
 
-          data/: Contains captured images and YOLO format labels.
+   data/: Contains captured images and YOLO format labels.
