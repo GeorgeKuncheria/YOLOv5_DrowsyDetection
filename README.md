@@ -36,15 +36,16 @@ pip install pyqt5 lxml # Required for labelImg
 
  ## 📸 Data Pipeline
 Data Collection
+  
   Images were captured using cv2.VideoCapture to create a personalized dataset.
-    * Classes: Awake, Drowsy
-    * Storage: Images are organized into a directory structure compatible with YOLOv5 training (images and labels).
+    1. Classes: Awake, Drowsy
+    2. Storage: Images are organized into a directory structure compatible with YOLOv5 training (images and labels).
   
 Annotation
   Manual labeling was performed using labelImg:
-    * Open labelImg.
-    * Set the "Save Format" to YOLO.
-    * Draw bounding boxes around the face/eyes and assign the appropriate class.
+    1. Open labelImg.
+    2. Set the "Save Format" to YOLO.
+    3. Draw bounding boxes around the face/eyes and assign the appropriate class.
 
 
 
@@ -65,7 +66,7 @@ python yolov5/train.py --img 320 --batch 16 --epochs 500 --data dataset.yaml --w
 Loading the Custom Model
   After training, you can load your custom weights (last.pt or best.pt) using Torch Hub:
 
-    ```python
+    ```py
         import torch
 
         # Load local custom model
