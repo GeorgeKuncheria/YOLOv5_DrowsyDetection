@@ -38,14 +38,26 @@ pip install pyqt5 lxml # Required for labelImg
 Data Collection
   
   Images were captured using cv2.VideoCapture to create a personalized dataset.
-    1. Classes: Awake, Drowsy
-    2. Storage: Images are organized into a directory structure compatible with YOLOv5 training (images and labels).
+    
+   1. Classes: Awake, Drowsy
+    
+   2. Storage: Images are organized into a directory structure compatible with YOLOv5 training (images and labels).
   
 Annotation
   Manual labeling was performed using labelImg:
-    1. Open labelImg.
-    2. Set the "Save Format" to YOLO.
-    3. Draw bounding boxes around the face/eyes and assign the appropriate class.
+    
+   1. Open labelImg and run labelImg.py.
+       ```bash
+       !cd labelImg && pyrcc5 -o libs/resources.py resources.qrc
+       ```
+
+        ```python
+        python labelImg.py
+       ```
+   
+   3. Set the "Save Format" to YOLO.
+   
+   4. Draw bounding boxes around the face/eyes and assign the appropriate class.
 
 
 
